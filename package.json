@@ -1,0 +1,51 @@
+{
+  "name": "referral-codes",
+  "version": "1.0.0",
+  "description": "High performance Referral/Promo/Voucher code generator",
+  "main": "index.js",
+  "repository": "git@github.com:zack37/referral-codes.git",
+  "author": "Zack Smith <zack.t.smith37@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava",
+    "benchmark": "node benchmarks/index.js",
+    "lint": "xo",
+    "lint:fix": "yarn lint --fix"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint:fix --"
+    ],
+    "*.{js,css,md}": [
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write --print-width=120"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint"
+    }
+  },
+  "xo": {
+    "prettier": true,
+    "plugins": [
+      "node",
+      "unicorn"
+    ],
+    "rules": {
+      "capitalized-comments": "off"
+    }
+  },
+  "devDependencies": {
+    "ava": "^3.8.2",
+    "benchmark": "^2.1.4",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.10",
+    "prettier": "^2.0.5",
+    "xo": "^0.32.0"
+  }
+}
