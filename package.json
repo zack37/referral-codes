@@ -6,6 +6,10 @@
   "repository": "git@github.com:zack37/referral-codes.git",
   "author": "Zack Smith <zack.t.smith37@gmail.com>",
   "license": "MIT",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
     "test": "ava",
     "benchmark": "node benchmarks/index.js",
