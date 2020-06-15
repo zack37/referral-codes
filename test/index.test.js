@@ -1,29 +1,29 @@
 const test = require('ava');
-const voucherCodes = require('..');
+const referralCodes = require('..');
 
 test('should generate code of request length', (t) => {
   const length = 5;
-  const [code] = voucherCodes.generate({ length });
+  const [code] = referralCodes.generate({ length });
 
   t.is(code.length, length);
 });
 
 test('should generate code of default length', (t) => {
   const defaultLength = 8;
-  const [code] = voucherCodes.generate({});
+  const [code] = referralCodes.generate({});
 
   t.is(code.length, defaultLength);
 });
 
 test('should generate code if no config provided', (t) => {
   const defaultLength = 8;
-  const [code] = voucherCodes.generate();
+  const [code] = referralCodes.generate();
 
   t.is(code.length, defaultLength);
 });
 
 test('should generate 5 unique codes', (t) => {
-  const codes = voucherCodes.generate({
+  const codes = referralCodes.generate({
     length: 2,
     count: 5,
   });
@@ -37,7 +37,7 @@ test('should generate 5 unique codes', (t) => {
 
 test('should generate a code consisting of numbers only', (t) => {
   const numbers = '0123456789';
-  const [code] = voucherCodes.generate({
+  const [code] = referralCodes.generate({
     length: 10,
     charset: numbers,
   });
@@ -48,7 +48,7 @@ test('should generate a code consisting of numbers only', (t) => {
 
 test('should generate a code consisting of letters only', (t) => {
   const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const [code] = voucherCodes.generate({
+  const [code] = referralCodes.generate({
     length: 10,
     charset: letters,
   });
@@ -58,7 +58,7 @@ test('should generate a code consisting of letters only', (t) => {
 });
 
 test('should generate code with prefix', (t) => {
-  const [code] = voucherCodes.generate({
+  const [code] = referralCodes.generate({
     prefix: 'promo-',
   });
 
@@ -66,7 +66,7 @@ test('should generate code with prefix', (t) => {
 });
 
 test('should generate code with postfix', (t) => {
-  const [code] = voucherCodes.generate({
+  const [code] = referralCodes.generate({
     postfix: '-extra',
   });
 
@@ -74,7 +74,7 @@ test('should generate code with postfix', (t) => {
 });
 
 test('should generate code with prefix and postfix', (t) => {
-  const [code] = voucherCodes.generate({
+  const [code] = referralCodes.generate({
     prefix: 'promo-',
     postfix: '-extra',
   });
@@ -83,7 +83,7 @@ test('should generate code with prefix and postfix', (t) => {
 });
 
 test('should generate code from pattern', (t) => {
-  const [code] = voucherCodes.generate({
+  const [code] = referralCodes.generate({
     pattern: '##-###-##',
   });
 
@@ -97,7 +97,7 @@ test('should detect infeasible config', (t) => {
     length: 5,
   }; // there are only 125 (5^3) possible codes for this config
 
-  t.throws(() => voucherCodes.generate(config), {
+  t.throws(() => referralCodes.generate(config), {
     message: 'Not possible to generate requested number of codes.',
   });
 });
@@ -108,20 +108,8 @@ test('should generate fixed code', (t) => {
     pattern: 'FIXED',
   };
 
-  const codes = voucherCodes.generate(config);
+  const codes = referralCodes.generate(config);
 
   t.is(codes.length, 1);
   t.is(codes[0], 'FIXED');
 });
-
-// test('should generate 3mil codes', t => {
-//   const config = {
-//     length: 11,
-//     count: 30000009,
-//     charset: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-//   }
-
-//   const codes = voucherCodes.generate(config);
-
-//   t.is(codes.length, 30000009);
-// })

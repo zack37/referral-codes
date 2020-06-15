@@ -112,14 +112,14 @@ Result: `["P7-ofW-Ka"]`
 
 #### Infeasible configs
 
-There exist some configs that are not feasible. For example it's not possible to generate 1000 codes if you want
-your codes to be 2 characters long and consisting only of numbers. Voucher code generator detects such cases and
+There exist some configs that are not feasible. For example it's not possible to generate 1500 codes if you want
+your codes to be 2 characters long and consisting only of numbers. Referral code generator detects such cases and
 throws an error `"Not possible to generate requested number of codes."`.
 
 ```
 try {
     referralCodes.generate({
-        count: 1000,
+        count: 1500,
         length: 2,
         charset: "0123456789"
     })
