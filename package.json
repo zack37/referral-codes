@@ -1,11 +1,21 @@
 {
   "name": "referral-codes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "High performance Referral/Promo/Voucher code generator",
   "main": "index.js",
   "repository": "git@github.com:zack37/referral-codes.git",
   "author": "Zack Smith <zack.t.smith37@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "referral",
+    "voucher",
+    "coupon",
+    "promo",
+    "code",
+    "generator",
+    "referral-code",
+    "referral-code-generator"
+  ],
   "files": [
     "index.js",
     "index.d.ts"
