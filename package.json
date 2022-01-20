@@ -24,6 +24,7 @@
     "build": "tsc",
     "pretest": "yarn build",
     "test": "ava",
+    "prebenchmark": "yarn build",
     "benchmark": "node benchmarks/index.js",
     "lint": "xo",
     "lint:fix": "yarn lint --fix",

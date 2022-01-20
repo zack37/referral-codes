@@ -11,13 +11,13 @@ I re-wrote this library using the same API, but with more modern syntax and more
 
 Install with yarn:
 
-```
+```sh
 $ yarn add referral-codes
 ```
 
 Install with npm:
 
-```
+```sh
 $ npm install -save referral-codes
 ```
 
@@ -25,10 +25,10 @@ $ npm install -save referral-codes
 
 Generate 5 codes, each 8 characters long:
 
-```
+```js
 referralCodes.generate({
-    length: 8,
-    count: 5
+  length: 8,
+  count: 5,
 });
 ```
 
@@ -38,11 +38,11 @@ Sample result: `["FR6bwx1q", "ByamOdWV", "7roFwfQs", "rmWlwvll", "pgih5eAB"]`
 
 Default charset is alphanumeric (numbers and letters). However, you can specify your own charset:
 
-```
+```js
 referralCodes.generate({
-    length: 6,
-    count: 3,
-    charset: "0123456789"
+  length: 6,
+  count: 3,
+  charset: '0123456789',
 });
 ```
 
@@ -60,21 +60,21 @@ Constants for these defaults can also be used to avoid issues with misspellings 
 
 For example:
 
-```
+```js
 referralCodes.generate({
-    length: 5,
-    count: 4,
-    charset: referralCodes.charset("alphabetic")
+  length: 5,
+  count: 4,
+  charset: referralCodes.charset('alphabetic'),
 });
 ```
 
 or
 
-```
+```js
 referralCodes.generate({
-    length: 5,
-    count: 4,
-    charset: referralCodes.charset(referralCodes.CHARSETS.ALPHABETIC)
+  length: 5,
+  count: 4,
+  charset: referralCodes.charset(referralCodes.Charset.ALPHABETIC),
 });
 ```
 
@@ -86,10 +86,10 @@ You can optionally surround each generated code with a prefix and/or postfix.
 
 For instance:
 
-```
+```js
 referralCodes.generate({
-    prefix: "promo-",
-    postfix: "-2015"
+  prefix: 'promo-',
+  postfix: '-2015',
 });
 ```
 
@@ -98,13 +98,13 @@ Result: `["promo-WZ4x1t3U-2015"]`
 #### Pattern
 
 Codes may follow a specified pattern. Use hash (`#`) as a placeholder for random characters.
-Notice that if `pattern` is specified then `length` is ignored.
+Note that if `pattern` is specified then `length` is ignored.
 
 Example:
 
-```
+```js
 referralCodes.generate({
-    pattern: "##-###-##",
+  pattern: '##-###-##',
 });
 ```
 
@@ -116,7 +116,7 @@ There exist some configs that are not feasible. For example it's not possible to
 your codes to be 2 characters long and consisting only of numbers. Referral code generator detects such cases and
 throws an error `"Not possible to generate requested number of codes."`.
 
-```
+```js
 try {
     referralCodes.generate({
         count: 1500,
@@ -143,14 +143,14 @@ catch (e) {
 
 Install dependencies:
 
-```
-yarn
+```sh
+$ yarn
 ```
 
 Run tests:
 
-```
-yarn test
+```sh
+$ yarn test
 ```
 
 ### Benchmarks
@@ -165,8 +165,8 @@ with 1000 codes x 2,278 ops/sec ±1.50% (84 runs sampled)
 
 Run benchmarks:
 
-```
-yarn benchmark
+```sh
+$ yarn benchmark
 ```
 
 ### License

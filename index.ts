@@ -48,9 +48,13 @@ export const generateOne = ({
   prefix,
   postfix,
 }: Required<Config>): string => {
-  const code = pattern.replace(new RegExp(placeholder, 'g'), () =>
-    randomElement(charset),
-  );
+  // Uses for_of loop for performance reasons
+  let code = '';
+  for (const p of pattern) {
+    if (p === placeholder) {
+      code += randomElement(charset);
+    }
+  }
 
   return `${prefix}${code}${postfix}`;
 };
