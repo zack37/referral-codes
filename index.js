@@ -27,7 +27,12 @@ const createConfig = (config = {}) => ({
     pattern: config.pattern ?? placeholder.repeat(config.length ?? 8),
 });
 const generateOne = ({ pattern, charset, prefix, postfix, }) => {
-    const code = pattern.replace(new RegExp(placeholder, 'g'), () => randomElement(charset));
+    let code = '';
+    for (const p of pattern) {
+        if (p === placeholder) {
+            code += randomElement(charset);
+        }
+    }
     return `${prefix}${code}${postfix}`;
 };
 exports.generateOne = generateOne;
