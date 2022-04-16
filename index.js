@@ -19,12 +19,12 @@ const charsets = {
 const charset = (name) => charsets[name];
 exports.charset = charset;
 const createConfig = (config = {}) => ({
-    count: config.count ?? 1,
-    length: config.length ?? 8,
-    charset: config.charset ?? (0, exports.charset)(Charset.ALPHANUMERIC),
-    prefix: config.prefix ?? '',
-    postfix: config.postfix ?? '',
-    pattern: config.pattern ?? placeholder.repeat(config.length ?? 8),
+    count: config.count ? config.count : 1,
+    length: config.length ? config.length : 8,
+    charset: config.charset ? config.charset : (0, exports.charset)(Charset.ALPHANUMERIC),
+    prefix: config.prefix ? config.prefix : '',
+    postfix: config.postfix ? config.postfix '',
+    pattern: config.pattern ? config.pattern: placeholder.repeat(config.length ? config.length: 8),
 });
 const generateOne = ({ pattern, charset, prefix, postfix, }) => {
     let code = '';
