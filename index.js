@@ -23,8 +23,8 @@ const createConfig = (config = {}) => ({
     length: config.length ? config.length : 8,
     charset: config.charset ? config.charset : (0, exports.charset)(Charset.ALPHANUMERIC),
     prefix: config.prefix ? config.prefix : '',
-    postfix: config.postfix ? config.postfix '',
-    pattern: config.pattern ? config.pattern: placeholder.repeat(config.length ? config.length: 8),
+    postfix: config.postfix ? config.postfix : '',
+    pattern: config.pattern ? config.pattern : placeholder.repeat(config.length ? config.length : 8),
 });
 const generateOne = ({ pattern, charset, prefix, postfix, }) => {
     let code = '';
