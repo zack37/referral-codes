@@ -17,5 +17,7 @@ export declare const generateOne: ({
   charset,
   prefix,
   postfix,
-}: Config) => string;
+}: Required<
+  Pick<Config, 'pattern' | 'charset' | 'prefix' | 'postfix'>
+>) => string;
 export declare const generate: (config: Config) => string[];

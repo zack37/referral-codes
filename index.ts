@@ -47,13 +47,14 @@ export const generateOne = ({
   charset,
   prefix,
   postfix,
-}: Required<Config>): string => {
+}: Required<
+  Pick<Config, 'pattern' | 'charset' | 'prefix' | 'postfix'>
+>): string => {
   // Uses for_of loop for performance reasons
   let code = '';
   for (const p of pattern) {
-    if (p === placeholder) {
-      code += randomElement(charset);
-    }
+    const c = p === placeholder ? randomElement(charset) : p;
+    code += c;
   }
 
   return `${prefix}${code}${postfix}`;

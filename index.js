@@ -18,20 +18,22 @@ const charsets = {
 };
 const charset = (name) => charsets[name];
 exports.charset = charset;
-const createConfig = (config = {}) => ({
-    count: config.count ? config.count : 1,
-    length: config.length ? config.length : 8,
-    charset: config.charset ? config.charset : (0, exports.charset)(Charset.ALPHANUMERIC),
-    prefix: config.prefix ? config.prefix : '',
-    postfix: config.postfix ? config.postfix : '',
-    pattern: config.pattern ? config.pattern : placeholder.repeat(config.length ? config.length : 8),
-});
+const createConfig = (config = {}) => {
+    var _a, _b, _c, _d, _e, _f, _g;
+    return ({
+        count: (_a = config.count) !== null && _a !== void 0 ? _a : 1,
+        length: (_b = config.length) !== null && _b !== void 0 ? _b : 8,
+        charset: (_c = config.charset) !== null && _c !== void 0 ? _c : (0, exports.charset)(Charset.ALPHANUMERIC),
+        prefix: (_d = config.prefix) !== null && _d !== void 0 ? _d : '',
+        postfix: (_e = config.postfix) !== null && _e !== void 0 ? _e : '',
+        pattern: (_f = config.pattern) !== null && _f !== void 0 ? _f : placeholder.repeat((_g = config.length) !== null && _g !== void 0 ? _g : 8),
+    });
+};
 const generateOne = ({ pattern, charset, prefix, postfix, }) => {
     let code = '';
     for (const p of pattern) {
-        if (p === placeholder) {
-            code += randomElement(charset);
-        }
+        const c = p === placeholder ? randomElement(charset) : p;
+        code += c;
     }
     return `${prefix}${code}${postfix}`;
 };
