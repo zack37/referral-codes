@@ -4,7 +4,6 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["es2020"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
@@ -21,7 +20,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "es2020",
+    "target": "es2019",
     "types": ["node"]
   },
   "include": ["./index.ts"],
