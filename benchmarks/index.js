@@ -1,5 +1,7 @@
-const { Suite } = require('benchmark');
-const { generate } = require('..');
+import benchmark from 'benchmark';
+import { generate } from '../index.js';
+
+const { Suite } = benchmark;
 
 const suite = new Suite();
 
