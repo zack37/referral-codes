@@ -15,8 +15,11 @@ export type Config = {
 
 const placeholder = '#';
 
-const size = (fn: (x: any) => boolean, array: ArrayLike<any>): number =>
-  fn ? Array.from(array).filter((x) => fn(x)).length : array.length;
+type Sizeable<T> = Iterable<T> & ArrayLike<T>;
+
+function size<T>(fn: (x: T) => boolean, array: Sizeable<T>): number {
+  return fn ? [...array].filter((x) => fn(x)).length : array.length;
+}
 
 const randomInt = (min: number, max: number): number =>
   Math.floor(Math.random() * (max - min + 1)) + min;
@@ -81,5 +84,5 @@ export const generate = (config: Config): string[] => {
     codes.add(generateOne(validatedConfig));
   }
 
-  return Array.from(codes);
+  return [...codes];
 };

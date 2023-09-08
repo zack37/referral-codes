@@ -1,5 +1,8 @@
 ## Referral Code Generator
 
+_This package is now using ESM. Please use v2 is you still need commonjs._
+Requires Node v18+
+
 Generate unique, random, and hard to guess coupon / voucher codes.
 Use cases: promo codes, loyalty coupons, gift vouchers, in-app purchases, referral links
 
@@ -118,13 +121,13 @@ throws an error `"Not possible to generate requested number of codes."`.
 
 ```js
 try {
-    referralCodes.generate({
-        count: 1500,
-        length: 2,
-        charset: "0123456789"
-    })
-catch (e) {
-    console.log("Sorry, not possible.");
+  referralCodes.generate({
+    count: 1500,
+    length: 2,
+    charset: '0123456789',
+  });
+} catch (e) {
+  console.log('Sorry, not possible.');
 }
 ```
 
